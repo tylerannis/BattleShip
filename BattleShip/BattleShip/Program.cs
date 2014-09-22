@@ -11,7 +11,8 @@ namespace BattleShip
         static void Main(string[] args)
         {
             Grid grid = new Grid();
-            Console.WriteLine(grid.Ocean[X, Y].Status);
+            Console.WriteLine(grid.Ocean[x, y].Status);
+            Console.ReadKey();
         }
     }
 }

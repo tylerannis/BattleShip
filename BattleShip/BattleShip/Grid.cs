@@ -30,7 +30,7 @@ namespace BattleShip
             }
             //syntax for adding points to the grid/ ocean
             //this.Ocean[x, y] = new Point(x, y, Point.PointStatus.Empty);
-            this.ListofShips = ListofShips.Add(Ship.ShipType.Submarine, Ship.ShipType.Minesweeper,Ship.ShipType.Cruiser.,Ship.ShipType.Carrier., Ship.ShipType.BattleShip);
+            this.ListofShips = ListofShips.Add(Ship.ShipType.Submarine, Ship.ShipType.Minesweeper,Ship.ShipType.Cruiser, Ship.ShipType.Carrier, Ship.ShipType.BattleShip);
             
             //add each ship to the list using PlaceShip function
             PlaceShip(ListofShips[0], PlaceShipDirection.Horizontal, 3, 3);
@@ -77,9 +77,10 @@ namespace BattleShip
             Console.WriteLine("8||");
             Console.WriteLine("9||");
             Console.WriteLine("Y||");
-            for (int x = 0; x < 10; x++)
+            for (int y = 0; y < 10; y++)
             {
-                for (int y = 0; y < 10; y++)
+                for (int x = 0; x < 10; x++)
+
                 {
                     if (this.Ocean[x, y].Status == Point.PointStatus.Miss)
                     {
@@ -118,19 +119,54 @@ namespace BattleShip
         //PlayGame
         public void PlayGame()
         {
-            while (!AllShipsDestroyed)
+            while (!this.AllShipsDestroyed)
             {
+                int inputx = 10;
+                int inputys = 10;
+                bool validX = false;
+                bool validY = false;
                 Console.WriteLine("Please enter a number for the X axis");
                 string input = Console.ReadLine();
+                while (!validX)
+                {
+                    if (!input.Contains("qwertyuiopasdfghjklzxcvbnm"))
+                    {
+                        Console.WriteLine("Please input a number");
+
+                    }
+                    else
+                    {
+                        inputx = int.Parse(input);
+                        validX = true;
+                    }
+                }
                 
-                    int.Parse(input);
-                
-                Console.WriteLine();
                 Console.WriteLine("Please enter a number for the Y axis");
-                string inputy = Console.ReadLine();
-                int.Parse(inputy);
                 
+                string inputy = Console.ReadLine();
+                while (!validY)
+                {
+                    
+                    if (!inputy.Contains("qwertyuiopasdfghjklzxcvbnm"))
+                    {
+                        Console.WriteLine("Please input a number");
+
+
+                    }
+                    else
+                    {
+                       inputys = int.Parse(inputy);
+                        validY = true;
+                    }
+                    
+                }
+                Target(inputx, inputys);
+
+                CombatRounds++;
             }
+
+            Console.WriteLine("YOU WON and it took you, " + CombatRounds + " rounds to do it");
         }
+
     }
 }
