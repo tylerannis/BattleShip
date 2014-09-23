@@ -75,7 +75,7 @@ namespace BattleShip
         //Display Ocean
         public void DisplayOcean()
         {
-            Console.WriteLine(" 0  1  2  3  4  5  6  7  8  9  X");
+            Console.WriteLine("    0  1  2  3  4  5  6  7  8  9  X");
            
             for (int y = 0; y < 10; y++)
             {
@@ -102,6 +102,7 @@ namespace BattleShip
                     }
 
                 }
+                Console.WriteLine("\n");
             }
         }
 
@@ -129,38 +130,38 @@ namespace BattleShip
                 int inputys = 10;
                 bool validX = false;
                 bool validY = false;
-                Console.WriteLine("Please enter a number for the X axis");
-                string input = Console.ReadLine();
+               
                 while (!validX)
                 {
-                    if (!input.Contains("qwertyuiopasdfghjklzxcvbnm"))
+                    Console.WriteLine("Please enter a number for the X axis");
+                    string input = Console.ReadLine();
+                    if ("0123456789".Contains(input) && input.Length == 1)
                     {
-                        Console.WriteLine("Please input a number");
-
-                    }
-                    else
-                    {
+                        
                         inputx = int.Parse(input);
                         validX = true;
                     }
-                }
-                
-                Console.WriteLine("Please enter a number for the Y axis");
-                
-                string inputy = Console.ReadLine();
-                while (!validY)
-                {
-                    
-                    if (!inputy.Contains("qwertyuiopasdfghjklzxcvbnm"))
+                    else
                     {
                         Console.WriteLine("Please input a number");
-
+                    }
+                }
+                
+               
+                while (!validY)
+                {
+                    Console.WriteLine("Please enter a number for the Y axis");
+                    string inputy = Console.ReadLine();   
+                    if ("0123456789".Contains(inputy) && inputy.Length == 1)
+                    {
+                        
+                        inputys = int.Parse(inputy);
+                        validY = true;
 
                     }
                     else
                     {
-                       inputys = int.Parse(inputy);
-                        validY = true;
+                        Console.WriteLine("Please input a number");
                     }
                     
                 }
