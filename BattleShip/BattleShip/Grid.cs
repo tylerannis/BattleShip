@@ -86,11 +86,15 @@ namespace BattleShip
                     Point aPoint = this.Ocean[x, y];
                     if (aPoint.Status == Point.PointStatus.Miss)
                     {
+                        Console.ForegroundColor = ConsoleColor.Blue;
                         Console.Write("[0]");
+                        Console.ForegroundColor = ConsoleColor.White;
                     }
                     else if (aPoint.Status == Point.PointStatus.Hit)
                     {
+                        Console.ForegroundColor = ConsoleColor.Red;
                         Console.Write("[+]");
+                        Console.ForegroundColor = ConsoleColor.White;
                     }
                     else if (aPoint.Status == Point.PointStatus.Empty)
                     {
@@ -122,9 +126,24 @@ namespace BattleShip
         //PlayGame
         public void PlayGame()
         {
-            
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine(@"
+______  ___ _____ _____ _      _____ _____ _   _ ___________ 
+| ___ \/ _ \_   _|_   _| |    |  ___/  ___| | | |_   _| ___ \
+| |_/ / /_\ \| |   | | | |    | |__ \ `--.| |_| | | | | |_/ /
+| ___ \  _  || |   | | | |    |  __| `--. \  _  | | | |  __/ 
+| |_/ / | | || |   | | | |____| |___/\__/ / | | |_| |_| |    
+\____/\_| |_/\_/   \_/ \_____/\____/\____/\_| |_/\___/\_|    
+                                                             
+                                                             
+");
+            Console.ForegroundColor = ConsoleColor.White;
+
+            System.Threading.Thread.Sleep(3000);
             while (!this.AllShipsDestroyed)
             {
+               
+                Console.Clear();
                 DisplayOcean();
                 int inputx = 10;
                 int inputys = 10;
@@ -166,7 +185,7 @@ namespace BattleShip
                     
                 }
                 Target(inputx, inputys);
-
+               
                 CombatRounds++;
             }
 

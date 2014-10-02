@@ -10,6 +10,7 @@ namespace BattleShip
     {
         static void Main(string[] args)
         {
+
             Grid grid = new Grid();
             grid.PlayGame();
             Console.ReadKey();
